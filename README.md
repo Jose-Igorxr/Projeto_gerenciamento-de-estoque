@@ -1,5 +1,5 @@
 # Projeto_gerenciamento-de-estoque
-Projeto de gerenciamento de estoque de lojas eletrônicas, fazendo uso de react como front-end em conjunto com o uso de django servindo como API para consumo
+Projeto de gerenciamento de estoque de lojas eletrônicas, fazendo uso de react para front-end em conjunto com o uso de django servindo para criação e consumo da API.
 
 Tecnologias usadas:
 - React
