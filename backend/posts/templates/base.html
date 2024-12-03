@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Meu Site{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Meu Site</h1>
+    </header>
+
+    <nav>
+        <!-- Menu de navegação comum -->
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">Sobre</a></li>
+            <li><a href="/contact/">Contato</a></li>
+
+            <!-- Links para CRUD com CBVs -->
+            <li><a href="{% url 'post_list' %}">Lista de Posts</a></li>
+            <li><a href="{% url 'post_create' %}">Criar Post</a></li>
+        </ul>
+
+        <!-- Links de autenticação -->
+        {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+            </form>
+        {% else %}
+            <ul>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Registrar</a></li>
+            </ul>
+        {% endif %}
+    </nav>
+
+    <main>
+        <!-- Conteúdo específico será inserido aqui -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

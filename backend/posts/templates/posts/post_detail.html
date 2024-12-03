@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}Detalhes do Post: {{ object.title
+}}{% endblock %} {% block content %}
+<h2>{{ object.title }}</h2>
+<p>{{ object.content }}</p>
+{% if object.image %}
+	<img style="width: 500px" src={{ object.image.url }} alt={{ object.title }} >
+{% endif %}
+<a href="{% url 'post_update' pk=object.pk %}">Editar</a>
+<form
+    action="{% url 'post_delete' pk=object.pk %}"
+    method="post"
+    style="display: inline"
+>
+    {% csrf_token %}
+    <button type="submit">Excluir</button>
+</form>
+{% endblock %}
